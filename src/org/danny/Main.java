@@ -443,25 +443,73 @@ public class Main {
 //        System.out.println("checking for 1 in int list with recursiveAny: " + intList.recursiveAny(value -> value == 1));
 
 
-        MyList<Integer> newestIntList = MyList.of(1, 2, 3, 4, 5);
-        MyList<String> newestStrList = MyList.of("Hello", "Goodbye", "Okay");
+//        MyList<Integer> newestIntList = MyList.of(1, 2, 3, 4, 5);
+//        MyList<String> newestStrList = MyList.of("Hello", "Goodbye", "Okay");
+//
+//        System.out.println(MyList.of(1, 2, 3, 4, 5).take(3).map(value -> value * 3));
+//
+//
+//        System.out.println(newestIntList);
+//        System.out.println(newestStrList);
+//
+//
+//
+//        System.out.println("intList.take(-1): " + intList.take(-1));
+//        System.out.println("intList.take(0): " + intList.take(0));
+//        System.out.println("intList.take(1): " + intList.take(1));
+//        System.out.println("intList.take(2): " + intList.take(2));
+//        System.out.println("intList.take(3): " + intList.take(3));
+//        System.out.println("intList.take(4): " + intList.take(4));
+//        System.out.println("intList.take(5): " + intList.take(5));
+//        System.out.println("intList.take(10): " + intList.take(10));
+//
+//        System.out.println();
 
-        System.out.println(MyList.of(1, 2, 3, 4, 5).take(3).map(value -> value * 3));
+//        System.out.println(newestIntList);
+//        System.out.println("Multiply by 10 and divide by 2:");
+//        System.out.println(newestIntList.recursiveMap(value -> (value * 10))
+//                .recursiveMap(value -> value/2));
 
+        MyList<Integer> allPosIntList = MyList.of(1, 2, 3, 4, 5);
+        MyList<Integer> allNegIntList = MyList.of(-1, -2, -3, -4, -5);
+        MyList<Integer> mixIntList = MyList.of(1, 2, -3, 4, 5);
+        MyList<Integer> emptyList = MyList.of();
 
-        System.out.println(newestIntList);
-        System.out.println(newestStrList);
+        System.out.println("takeWhilePositive on all positive: "
+                        + Utils.takeWhilePositive(allPosIntList));
 
+        System.out.println("takeWhilePositive on all negative: "
+                + Utils.takeWhilePositive(allNegIntList));
 
+        System.out.println("takeWhilePositive on mixed list: "
+                + Utils.takeWhilePositive(mixIntList));
 
-        System.out.println("intList.take(-1): " + intList.take(-1));
-        System.out.println("intList.take(0): " + intList.take(0));
-        System.out.println("intList.take(1): " + intList.take(1));
-        System.out.println("intList.take(2): " + intList.take(2));
-        System.out.println("intList.take(3): " + intList.take(3));
-        System.out.println("intList.take(4): " + intList.take(4));
-        System.out.println("intList.take(5): " + intList.take(5));
-        System.out.println("intList.take(10): " + intList.take(10));
+        System.out.println("takeWhilePositive on empty list: "
+                + Utils.takeWhilePositive(emptyList));
+
+        System.out.println();
+
+        System.out.println("Same, but instance, looking for greater than 0:");
+
+        System.out.println("takeWhile on all positive: "
+                + allPosIntList.takeWhile(value -> value > 0));
+
+        System.out.println("takeWhile on all negative: "
+                + allNegIntList.takeWhile(value -> value > 0));
+
+        System.out.println("takeWhile on mixed list: "
+                + mixIntList.takeWhile(value -> value > 0));
+
+        System.out.println("takeWhile on empty list: "
+                + emptyList.takeWhile(value -> value > 0));
+
+        System.out.println();
+        System.out.println();
+
+        MyList<Integer> longMixedIntList = MyList.of(-1, 1, -2, 2, -3, 3, -4, 4, -5, 5);
+        System.out.println("longMixedIntList: " + longMixedIntList);
+        System.out.println("Filter positive out of longMixedIntList:");
+        System.out.println(Utils.filterPositive(longMixedIntList));
 
 
     }

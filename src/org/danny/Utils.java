@@ -195,7 +195,7 @@ public class Utils {
         if (intList.isEmpty()){
             return new MyList<>();
         } else {
-            return doubled(intList.rest()).push(intList.head.value * 2);
+            return recursiveDoubled(intList.rest()).push(intList.head.value * 2);
         }
     }
 
@@ -249,6 +249,33 @@ public class Utils {
         } else {
             return (list.head.value >= 0 && recursiveAllPositive(list.rest()));
         }
+    }
+
+    public static MyList<Integer> takeWhilePositive(MyList<Integer> intList){
+        MyList<Integer> result = new MyList<>();
+
+        MyListElement<Integer> cursor = intList.head;
+
+        while (cursor != null && cursor.value >= 0) {
+            result.append(cursor.value);
+            cursor = cursor.next;
+        }
+        return result;
+    }
+
+    public static MyList<Integer> filterPositive(MyList<Integer> intList){
+        MyList<Integer> result = new MyList<>();
+
+        MyListElement<Integer> cursor = intList.head;
+
+        while (cursor != null){
+            if (cursor.value >= 0){
+                result.append(cursor.value);
+            }
+            cursor = cursor.next;
+        }
+        return result;
+
     }
 
 

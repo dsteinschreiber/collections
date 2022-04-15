@@ -6,6 +6,7 @@ public class MyList<T> {
 
     /**
      * List factory
+     *
      * @param elements
      * @param <T>
      * @return new list
@@ -180,9 +181,9 @@ public class MyList<T> {
      *
      * @return rest
      */
-    public MyList rest() {
+    public MyList<T> rest() {
 
-        MyList rest = new MyList();
+        MyList<T> rest = new MyList<>();
 
         rest.head = this.head.next;
 
@@ -390,7 +391,8 @@ public class MyList<T> {
 
 
     /**
-     * Applies a condition to instance list and appends result to a new list
+     * Applies the mapper to every element in the list and returns a list containing
+     * the results in application order.
      *
      * @param mapper
      * @param <V>
@@ -409,14 +411,23 @@ public class MyList<T> {
         return result;
     }
 
-//    public <V> MyList<V> recursiveMap(Function<T, V> mapper){
-//        if (this.isEmpty()){
-//            return new MyList<>();
-//        } else {
-//
-//        }
-//
-//    }
+    /**
+     * Applies the mapper to every element in the list and returns a list containing
+     * the results in application order.
+     *
+     * @param mapper
+     * @param <V>
+     * @return *see above*
+     */
+    public <V> MyList<V> recursiveMap(Function<T, V> mapper) {
+        if (this.isEmpty()) {
+            return new MyList<>();
+        } else {
+            return this.rest().recursiveMap(mapper)
+                    .push(mapper.apply(this.head.value));
+        }
+
+    }
 
 
     /**
@@ -466,6 +477,32 @@ public class MyList<T> {
 //            }
 //        }
 
+        return result;
+    }
+
+    public MyList<T> takeWhile(Function<T, Boolean> condition){
+        MyList<T> result = new MyList<>();
+
+        MyListElement<T> cursor = this.head;
+
+        while (cursor != null && condition.apply(cursor.value)){
+            result.append(cursor.value);
+            cursor = cursor.next;
+        }
+        return result;
+    }
+
+    public MyList<T> filter(Function<T, Boolean> condition){
+        MyList<T> result = new MyList<>();
+
+        MyListElement<T> cursor = this.head;
+
+        while (cursor != null) {
+            if (condition.apply(cursor.value)){
+                result.append(cursor.value);
+            }
+            cursor = cursor.next;
+        }
         return result;
     }
 
