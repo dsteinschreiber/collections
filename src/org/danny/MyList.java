@@ -313,12 +313,14 @@ public class MyList<T> {
 
         MyListElement<T> cursor = this.head;
 
-
-        for (int i = 0; i < n && cursor != null; i++){
+        for (int i = 0; i < n && cursor != null; i++) {
             result.append(cursor.value);
             cursor = cursor.next;
         }
-
+//
+//
+//        ***** COULD'VE DONE THIS *****
+//
 //        for (int i = 0; i < n; i++){
 //            if (cursor != null){
 //                result.append(cursor.value);
@@ -329,6 +331,12 @@ public class MyList<T> {
 //        }
 //
 //        ***** OR *****
+//
+//        int counter = 0;
+//
+//        if (n <= 0){
+//          return result;
+//        }
 //
 //        while (cursor != null) {
 //            result.append(cursor.value);
