@@ -4,6 +4,12 @@ import java.util.function.Function;
 
 public class MyList<T> {
 
+    /**
+     * List factory
+     * @param elements
+     * @param <T>
+     * @return new list
+     */
     public static <T> MyList<T> of(T... elements) {
         MyList<T> result = new MyList<>();
 
@@ -96,7 +102,9 @@ public class MyList<T> {
     public MyListElement<T> head = null;
 
     /**
-     * @return
+     * Identifies last element in list
+     *
+     * @return last element
      */
     private MyListElement<T> last() {
         if (head == null)
@@ -110,6 +118,12 @@ public class MyList<T> {
         return nextElem;
     }
 
+
+    /**
+     * Identifies last element in list
+     *
+     * @return last element
+     */
     public MyListElement<T> smartLast() {
         if (this.isEmpty()) {
             return null;
@@ -120,8 +134,16 @@ public class MyList<T> {
         }
     }
 
+
+    /**
+     * removes element from list
+     *
+     * @param elem
+     */
     public void remove(MyListElement<T> elem) {
+
         MyListElement<T> prev = head;
+
         while (prev != null) {
             if (prev.next == elem) {
                 // found it!
@@ -131,6 +153,13 @@ public class MyList<T> {
             }
         }
     }
+
+    /**
+     * finds element in list
+     *
+     * @param index
+     * @return reference
+     */
 
     public MyListElement<T> get(int index) { // when asked for index 0, return head, if none exist return null (request for 5 with only 3 elements)
 
@@ -145,6 +174,12 @@ public class MyList<T> {
         return reference;
     }
 
+
+    /**
+     * creates a new list made of rest of instance list (after head)
+     *
+     * @return rest
+     */
     public MyList rest() {
 
         MyList rest = new MyList();
@@ -153,6 +188,13 @@ public class MyList<T> {
 
         return rest;
     }
+
+    /**
+     * Adds element to beginning of list
+     *
+     * @param elem
+     * @return this (instance)
+     */
 
     public MyList<T> push(MyListElement<T> elem) {
 
@@ -174,6 +216,12 @@ public class MyList<T> {
         return push(element);
     }
 
+
+    /**
+     * Reverses list
+     *
+     * @return reversed
+     */
     public MyList reverse() {
 
         MyList reversed = new MyList();
@@ -189,6 +237,13 @@ public class MyList<T> {
         return reversed;
     }
 
+
+    /**
+     * Reverses list
+     *
+     * @return reversed
+     */
+
     public MyList smartReverse() {
 
         MyList reversed = new MyList();
@@ -202,6 +257,13 @@ public class MyList<T> {
         }
     }
 
+
+    /**
+     * Checks if list contains a value
+     *
+     * @param value
+     * @return contains
+     */
     public Boolean contains(T value) {
         Boolean contains = false;
 
@@ -215,6 +277,13 @@ public class MyList<T> {
         return contains;
     }
 
+
+    /**
+     * Checks if list contains a value
+     *
+     * @param value
+     * @return contains
+     */
     public Boolean smartContains(T value) {
         Boolean contains = false;
         MyListElement<T> cursor = this.head;
@@ -229,6 +298,13 @@ public class MyList<T> {
         return contains;
     }
 
+
+    /**
+     * Checks if list contains a specific value
+     *
+     * @param value
+     * @return true/false
+     */
     public Boolean recursiveContains(T value) {
         if (this.isEmpty()) {
             return false;
@@ -237,6 +313,13 @@ public class MyList<T> {
         }
     }
 
+
+    /**
+     * Checks if list contains a value that matches a condition
+     *
+     * @param condition
+     * @return result
+     */
     public Boolean any(Function<T, Boolean> condition) {
         Boolean result = false;
 
@@ -249,6 +332,13 @@ public class MyList<T> {
         return result;
     }
 
+
+    /**
+     * Checks if list contains a value that matches a condition
+     *
+     * @param condition
+     * @return result
+     */
     public Boolean smartAny(Function<T, Boolean> condition) {
         Boolean result = false;
 
@@ -264,6 +354,13 @@ public class MyList<T> {
         return result;
     }
 
+
+    /**
+     * Checks if list contains a value that matches a condition
+     *
+     * @param condition
+     * @return true/false
+     */
     public Boolean recursiveAny(Function<T, Boolean> condition) {
         if (this.isEmpty()) {
             return false;
@@ -273,6 +370,12 @@ public class MyList<T> {
     }
 
 
+    /**
+     * Checks if all values in list match a condition
+     *
+     * @param condition
+     * @return true/false
+     */
     public Boolean all(Function<T, Boolean> condition) {
         MyListElement<T> cursor = this.head;
 
@@ -286,6 +389,13 @@ public class MyList<T> {
     }
 
 
+    /**
+     * Applies a condition to instance list and appends result to a new list
+     *
+     * @param mapper
+     * @param <V>
+     * @return result
+     */
     public <V> MyList<V> map(Function<T, V> mapper) {
         MyList<V> result = new MyList<>();
 
@@ -308,6 +418,15 @@ public class MyList<T> {
 //
 //    }
 
+
+    /**
+     * Returns a list that contains the first n elements in instance list
+     * If n is greater that instance list, returns instance list.
+     * if n <= 0, returns empty list.
+     *
+     * @param n
+     * @return result
+     */
     public MyList<T> take(int n) {
         MyList<T> result = new MyList<>();
 
