@@ -313,17 +313,32 @@ public class MyList<T> {
 
         MyListElement<T> cursor = this.head;
 
-        if (n <= 0) {
-            return result;
-        }
 
-        while (cursor != null) {
+        for (int i = 0; i < n && cursor != null; i++){
             result.append(cursor.value);
             cursor = cursor.next;
-            if (result.size() == n) {
-                return result;
-            }
         }
+
+//        for (int i = 0; i < n; i++){
+//            if (cursor != null){
+//                result.append(cursor.value);
+//                cursor = cursor.next;
+//            } else {
+//                break;
+//            }
+//        }
+//
+//        ***** OR *****
+//
+//        while (cursor != null) {
+//            result.append(cursor.value);
+//            cursor = cursor.next;
+//            counter++;
+//            if (counter == n) {
+//                return result;
+//            }
+//        }
+
         return result;
     }
 
