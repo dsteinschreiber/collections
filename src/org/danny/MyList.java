@@ -21,19 +21,14 @@ public class MyList<T> {
         return result;
     }
 
-    public static MyList<Integer> range(Integer first, Integer last){
-        MyList<Integer> result = new MyList<>();
-
-        for (int i = first; i <= last; i++){
-            result.append(i);
-        }
-        return result;
+    public static MyList<Integer> range(Integer first, Integer last) {
+        return MyList.range(first, last, 1);
     }
 
-    public static MyList<Integer> range(Integer first, Integer length, Integer increment){
+    public static MyList<Integer> range(Integer first, Integer length, Integer increment) {
         MyList<Integer> result = new MyList<>();
 
-        for (int i = first; i <= length * increment; i = i + increment){
+        for (int i = first; i <= length * increment; i = i + increment) {
             result.append(i);
         }
 
@@ -500,25 +495,25 @@ public class MyList<T> {
         return result;
     }
 
-    public MyList<T> takeWhile(Function<T, Boolean> condition){
+    public MyList<T> takeWhile(Function<T, Boolean> condition) {
         MyList<T> result = new MyList<>();
 
         MyListElement<T> cursor = this.head;
 
-        while (cursor != null && condition.apply(cursor.value)){
+        while (cursor != null && condition.apply(cursor.value)) {
             result.append(cursor.value);
             cursor = cursor.next;
         }
         return result;
     }
 
-    public MyList<T> filter(Function<T, Boolean> condition){
+    public MyList<T> filter(Function<T, Boolean> condition) {
         MyList<T> result = new MyList<>();
 
         MyListElement<T> cursor = this.head;
 
         while (cursor != null) {
-            if (condition.apply(cursor.value)){
+            if (condition.apply(cursor.value)) {
                 result.append(cursor.value);
             }
             cursor = cursor.next;
@@ -527,36 +522,23 @@ public class MyList<T> {
     }
 
     public Boolean equals(MyList<T> that) {
-        boolean result = false;
 
         MyListElement<T> cursor1 = this.head;
         MyListElement<T> cursor2 = that.head;
 
-//        if (this.size() != that.size())
-//        {
-//            return false;
-//        }
-
         while (cursor1 != null && cursor2 != null) {
             if (cursor1.value != cursor2.value) {
-                result = false;
-                break;
-            } else {
-                result = true;
+                return false;
             }
             cursor1 = cursor1.next;
             cursor2 = cursor2.next;
         }
 
-        if (cursor1 == null && cursor2 != null){
-            result = false;
+        if (cursor1 != null || cursor2 != null) {
+            return false;
         }
 
-        if (cursor1 != null && cursor2 == null){
-            result = false;
-        }
-
-        return result;
+        return true;
     }
 }
 

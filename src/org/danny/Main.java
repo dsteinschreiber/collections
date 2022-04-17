@@ -388,7 +388,7 @@ public class Main {
 //
 //        System.out.println("intList: " + listImGoingToDouble);
 //        System.out.println("Recursive double on intList: " + Utils.recursiveDoubled(listImGoingToDouble));
-        
+
         MyList<Integer> intList = new MyList<>();
 
         intList.append(1);
@@ -435,7 +435,6 @@ public class Main {
 //        System.out.println(strList2.all(value -> !value.isEmpty()));
 
 
-
 //        System.out.println("checking for 1 in int list with any: " + intList.any(value -> value == 1));
 //
 //        System.out.println("checking for 1 in int list with smartAny: " + intList.smartAny(value -> value == 1));
@@ -476,7 +475,7 @@ public class Main {
         MyList<Integer> emptyList = MyList.of();
 
         System.out.println("takeWhilePositive on all positive: "
-                        + Utils.takeWhilePositive(allPosIntList));
+                + Utils.takeWhilePositive(allPosIntList));
 
         System.out.println("takeWhilePositive on all negative: "
                 + Utils.takeWhilePositive(allNegIntList));
@@ -515,7 +514,7 @@ public class Main {
 
         System.out.println();
 
-        MyList<Integer> anotherIntList = MyList.of(1,2,3,4,5,6,7,8,9,10);
+        MyList<Integer> anotherIntList = MyList.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         System.out.println("anotherIntList: " + anotherIntList);
         System.out.println();
         System.out.println("Filtering evens: " + anotherIntList.filter(value -> value % 2 == 0));
@@ -531,9 +530,9 @@ public class Main {
         MyList<Integer> rangeList2 = MyList.range(1, 10, 2);
         System.out.println("Range list 2: " + rangeList2);
 
-        MyList<Integer> listToCompare1 = MyList.range(1,10);
-        MyList<Integer> listToCompare2 = MyList.range(1,10);
-        MyList<Integer> listToCompare3 = MyList.of(1,2,3,4,5,6,7,8,9);
+        MyList<Integer> listToCompare1 = MyList.range(1, 10);
+        MyList<Integer> listToCompare2 = MyList.range(1, 10);
+        MyList<Integer> listToCompare3 = MyList.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
         MyList<Integer> listToCompare4 = MyList.range(1, 11);
 
         System.out.println();

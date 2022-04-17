@@ -97,7 +97,7 @@ public class Utils {
 
 
     public static Boolean recursiveAnyPositive(MyList<Integer> integerList) {
-        if (integerList.isEmpty()){
+        if (integerList.isEmpty()) {
             return false;
         } else {
             return integerList.head.value >= 0 || Utils.recursiveAnyPositive(integerList.rest());
@@ -133,7 +133,7 @@ public class Utils {
     }
 
     public static Boolean recursiveAnyNegative(MyList<Integer> integerList) {
-        if (integerList.isEmpty()){
+        if (integerList.isEmpty()) {
             return false;
         } else {
             return integerList.head.value < 0 || Utils.recursiveAnyNegative(integerList.rest());
@@ -168,20 +168,20 @@ public class Utils {
         return anyZero;
     }
 
-    public static Boolean recursiveAnyZero(MyList<Integer> integerList){
-        if (integerList.isEmpty()){
+    public static Boolean recursiveAnyZero(MyList<Integer> integerList) {
+        if (integerList.isEmpty()) {
             return false;
         } else {
             return integerList.head.value == 0 || Utils.recursiveAnyZero(integerList.rest());
         }
     }
 
-    public static MyList<Integer> doubled(MyList<Integer> integerList){
+    public static MyList<Integer> doubled(MyList<Integer> integerList) {
         MyList<Integer> doubledList = new MyList<>();
 
         MyListElement<Integer> cursor = integerList.head;
 
-        while (cursor != null){
+        while (cursor != null) {
             doubledList.append(cursor.value * 2);
             cursor = cursor.next;
         }
@@ -191,8 +191,8 @@ public class Utils {
 
 
     // Recursive template for mapping
-    public static MyList<Integer> recursiveDoubled(MyList<Integer> intList){
-        if (intList.isEmpty()){
+    public static MyList<Integer> recursiveDoubled(MyList<Integer> intList) {
+        if (intList.isEmpty()) {
             return new MyList<>();
         } else {
             return recursiveDoubled(intList.rest()).push(intList.head.value * 2);
@@ -200,13 +200,12 @@ public class Utils {
     }
 
 
-
-    public static MyList<String> doubledStr(MyList<String> stringList){
+    public static MyList<String> doubledStr(MyList<String> stringList) {
         MyList<String> doubledList = new MyList<>();
 
         MyListElement<String> cursor = stringList.head;
 
-        while (cursor != null){
+        while (cursor != null) {
             doubledList.append(cursor.value + " " + cursor.value);
             cursor = cursor.next;
         }
@@ -214,12 +213,12 @@ public class Utils {
         return doubledList;
     }
 
-    public static MyList<Integer> lengths(MyList<String> list){
+    public static MyList<Integer> lengths(MyList<String> list) {
         MyList<Integer> result = new MyList<>();
 
         MyListElement<String> cursor = list.head;
 
-        while (cursor != null){
+        while (cursor != null) {
             result.append(cursor.value.length());
             cursor = cursor.next;
         }
@@ -227,14 +226,14 @@ public class Utils {
         return result;
     }
 
-    public static Boolean allPositive(MyList<Integer> list){
+    public static Boolean allPositive(MyList<Integer> list) {
         Boolean result = true;
         Integer positiveCount = 0;
 
         MyListElement<Integer> cursor = list.head;
 
-        while (cursor != null){
-            if (cursor.value < 0){
+        while (cursor != null) {
+            if (cursor.value < 0) {
                 return false;
             }
             cursor = cursor.next;
@@ -243,15 +242,15 @@ public class Utils {
         return result;
     }
 
-    public static Boolean recursiveAllPositive(MyList<Integer> list){
-        if (list.isEmpty()){
+    public static Boolean recursiveAllPositive(MyList<Integer> list) {
+        if (list.isEmpty()) {
             return true;
         } else {
             return (list.head.value >= 0 && recursiveAllPositive(list.rest()));
         }
     }
 
-    public static MyList<Integer> takeWhilePositive(MyList<Integer> intList){
+    public static MyList<Integer> takeWhilePositive(MyList<Integer> intList) {
         MyList<Integer> result = new MyList<>();
 
         MyListElement<Integer> cursor = intList.head;
@@ -263,13 +262,13 @@ public class Utils {
         return result;
     }
 
-    public static MyList<Integer> filterPositive(MyList<Integer> intList){
+    public static MyList<Integer> filterPositive(MyList<Integer> intList) {
         MyList<Integer> result = new MyList<>();
 
         MyListElement<Integer> cursor = intList.head;
 
-        while (cursor != null){
-            if (cursor.value >= 0){
+        while (cursor != null) {
+            if (cursor.value >= 0) {
                 result.append(cursor.value);
             }
             cursor = cursor.next;
