@@ -21,6 +21,26 @@ public class MyList<T> {
         return result;
     }
 
+    public static MyList<Integer> range(Integer first, Integer last){
+        MyList<Integer> result = new MyList<>();
+
+        for (int i = first; i <= last; i++){
+            result.append(i);
+        }
+        return result;
+    }
+
+    public static MyList<Integer> range(Integer first, Integer length, Integer increment){
+        MyList<Integer> result = new MyList<>();
+
+        for (int i = first; i <= length * increment; i = i + increment){
+            result.append(i);
+        }
+
+        return result;
+    }
+
+
     /**
      * This method converts list to String
      *
@@ -506,6 +526,38 @@ public class MyList<T> {
         return result;
     }
 
+    public Boolean equals(MyList<T> that) {
+        boolean result = false;
+
+        MyListElement<T> cursor1 = this.head;
+        MyListElement<T> cursor2 = that.head;
+
+//        if (this.size() != that.size())
+//        {
+//            return false;
+//        }
+
+        while (cursor1 != null && cursor2 != null) {
+            if (cursor1.value != cursor2.value) {
+                result = false;
+                break;
+            } else {
+                result = true;
+            }
+            cursor1 = cursor1.next;
+            cursor2 = cursor2.next;
+        }
+
+        if (cursor1 == null && cursor2 != null){
+            result = false;
+        }
+
+        if (cursor1 != null && cursor2 == null){
+            result = false;
+        }
+
+        return result;
+    }
 }
 
 

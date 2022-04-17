@@ -275,7 +275,6 @@ public class Utils {
             cursor = cursor.next;
         }
         return result;
-
     }
 
 

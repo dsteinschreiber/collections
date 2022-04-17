@@ -511,6 +511,44 @@ public class Main {
         System.out.println("Filter positive out of longMixedIntList:");
         System.out.println(Utils.filterPositive(longMixedIntList));
 
+        // TEST FILTER FOR ODDS AND EVENS
+
+        System.out.println();
+
+        MyList<Integer> anotherIntList = MyList.of(1,2,3,4,5,6,7,8,9,10);
+        System.out.println("anotherIntList: " + anotherIntList);
+        System.out.println();
+        System.out.println("Filtering evens: " + anotherIntList.filter(value -> value % 2 == 0));
+        System.out.println("Filtering odds: " + anotherIntList.filter(value -> value % 2 != 0));
+
+        System.out.println();
+
+        MyList<Integer> rangeList1 = MyList.range(1, 10);
+        System.out.println("Range list 1: " + rangeList1);
+
+        System.out.println();
+
+        MyList<Integer> rangeList2 = MyList.range(1, 10, 2);
+        System.out.println("Range list 2: " + rangeList2);
+
+        MyList<Integer> listToCompare1 = MyList.range(1,10);
+        MyList<Integer> listToCompare2 = MyList.range(1,10);
+        MyList<Integer> listToCompare3 = MyList.of(1,2,3,4,5,6,7,8,9);
+        MyList<Integer> listToCompare4 = MyList.range(1, 11);
+
+        System.out.println();
+        System.out.println("listToCompare1: " + listToCompare1);
+        System.out.println("listToCompare2: " + listToCompare2);
+        System.out.println("listToCompare3: " + listToCompare3);
+        System.out.println("listToCompare4: " + listToCompare4);
+
+        System.out.println();
+
+        System.out.println("list1 = list2: " + listToCompare1.equals(listToCompare2));
+        System.out.println("list1 = list3: " + listToCompare1.equals(listToCompare3));
+        System.out.println("list2 = list3: " + listToCompare2.equals(listToCompare3));
+        System.out.println("list1 = list4: " + listToCompare1.equals(listToCompare4));
+
 
     }
 
@@ -610,6 +648,5 @@ public class Main {
 
 
     }
-
 
 }
